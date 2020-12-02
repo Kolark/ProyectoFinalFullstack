@@ -4,6 +4,7 @@ const app = express()
 const viewsRoutes = require('./routes/views')
 //Use
 app.use(express.static('public'))
+app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use(express.json())
 app.set('view engine','ejs')
 app.use(viewsRoutes)
