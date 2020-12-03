@@ -23,17 +23,10 @@ const lugarSchema = new mongoose.Schema({
         }
     }
     ,
-    contacto:{
-        email:{
-            type:String,
-            trim:true,
-            required:true
-        },
-        celular:{
-            type:String,
-            trim:true,
-            required:true
-        }
+    usuario:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'usuario',
+        required: true
     },
     direccion:{
         ciudad:{
