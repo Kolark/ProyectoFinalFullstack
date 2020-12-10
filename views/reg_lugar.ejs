@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Lugar</title>
+    <%- include('partials/head') %>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <form id="_form">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <label for="nombre">
+                        <h2>Nombre</h2>
+                    </label>
+                    <input type="text" class="form-control" id="nombre">
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Informacion</h2>
+                </div>
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col">
+                            <label for="select-tipo">Tipo</label>
+                            <br>
+                            <select class="form-select" id="select-tipo">
+                                <option value="Hotel">Hotel</option>
+                                <option value="Residencia">Residencia</option>
+                                <option value="Condominio">Condominio</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="costo">Costo</label>
+                            <input type="text" class="form-control" id="costo">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <label for="descripcion">
+                        <h4>Descripcion</h4>
+                    </label>
+                    <textarea class="form-control" rows = "3" cols = "60" id="descripcion"></textarea>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col">
+                    <h4>Usuario</h4>
+                    <input type="text" class="form-control" id="emailuser">
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col">
+                    <h4>Dirección</h4>
+                    <label for="ciudadnombre">Ciudad</label>
+                    <input type="text" class="form-control" id="ciudadnombre">
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col">
+                    <label for="foto">Subir Foto</label>
+                    <input type="file" class="form-control" id="foto">
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Terminar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <h5>Registrar Lugar</h5>
+   
+    <%- include('partials/footer') %>
+</body>
+<script src="/js/reg_lugar.js"></script>
+</html>

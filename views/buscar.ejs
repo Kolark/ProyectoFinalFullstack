@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Lugares</title>
+    <%- include('partials/head') %>
+</head>
+<body>
+    <%- include('partials/header') %>
+    
+        
+        <form id="_form">
+            
+            <div class="container">
+                <label for="searchbar">
+                    <h1>Buscar Lugares</h1>
+                </label>
+                <div class="row">
+                    <div class="col-3">
+                        <input type="text" class="form-control" id="searchbar">
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="container">
+            <div class="row" id="results">
+
+            </div>
+        </div>
+    
+    <%- include('partials/footer') %>
+</body>
+<script src="/js/buscar.js"></script>
+</html>
+

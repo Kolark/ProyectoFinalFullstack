@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Usuario</title>
+    <%- include('partials/head') %>
+</head>
+<body>
+    <%- include('partials/header') %>
+    
+    <h1>Registrar Usuario</h1>
+    <form id="_form">
+        <div class="form-group">
+            <div class="container">
+                <div class="row">
+                    <div class="col-4">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombre">
+                    </div>
+                    <div class="col-4">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email">
+                    </div>
+                    <div class="col-4">
+                        <label for="telefono" >Telefono</label>
+                        <input type="text" class="form-control" id="telefono">
+                    </div>
+                </div>
+                <hr class="my-4">
+                <button type="submit" class="btn btn-primary">Registrar</button>
+            </div>
+        </div>
+    </form>
+    
+
+    <%- include('partials/footer') %>
+</body>
+<script src="/js/reg_user.js"></script>
+</html>

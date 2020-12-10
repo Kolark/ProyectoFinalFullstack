@@ -1,0 +1,15 @@
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+.navheader{
+    align-self: center;
+}
+
+header{
+    background-color: #FF724C;
+}
+footer{
+    background-color: #730039;
+}

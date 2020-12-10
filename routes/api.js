@@ -9,9 +9,25 @@ const router = new express.Router();
 //GET [TODOS LOS LUGARES]
 router.get('/lugares',async(req,res)=>{
     try{
-        const lugares = await Lugar.find({});
+        const filter = {}
+        if(req.query.nombre){
+            filter.nombre = new RegExp('^'+req.query.nombre)
+        }
+        if(req.query.email){
+            const useremail = req.query.email;
+            const _user = await Usuario.findOne({email:useremail})
+            filter.usuario = _user._id
+        }
+        if(req.query.ciudad){
+            filter.direccion = {
+                ciudad:{
+                    nombre:new RegExp('^'+req.query.ciudad)
+                }
+            }
+        }
+        console.log(filter)
+        const lugares = await Lugar.find(filter);
         res.send(lugares);
-        console.log('pidiendo el get')
     }
     catch(e){
         res.status(500).send({
@@ -20,49 +36,52 @@ router.get('/lugares',async(req,res)=>{
     }
     
 })
-//GET [lOS LUGARES MAS PARECIDOS EN NOMBRE]
-router.get('/lugares/:name',async(req,res)=>{
-    try{
-        const name = req.params.name;
+// //GET [lOS LUGARES MAS PARECIDOS EN NOMBRE]
+// router.get('/lugares/:name',async(req,res)=>{
+//     try{
+//         const name = req.params.name;
 
-        const lugares = await Lugar.find({nombre:new RegExp('^'+name)});
-        res.send(lugares);
-        console.log('pidiendo el get')
-    }
-    catch(e){
-        res.status(500).send({
-            message:'Error inesperado'
-        })
-    }
-})
-//GET [LUGARES POR UN USUARIO]
-router.get('/lugares/byemail/:user',async(req,res)=>{
-    try{
-        const useremail = req.params.user;
-        const _user = await Usuario.findOne({email:useremail})
-        const lugares = await Lugar.find({usuario:_user._id});
-        res.send(lugares);
-        console.log('pidiendo el get')
-    }
-    catch(e){
-        res.status(500).send({
-            message:'Error inesperado'
-        })
-    }
-})
+//         const lugares = await Lugar.find({nombre:new RegExp('^'+name)});
+//         res.send(lugares);
+//         console.log('pidiendo el get')
+//     }
+//     catch(e){
+//         res.status(500).send({
+//             message:'Error inesperado'
+//         })
+//     }
+// })
+// //GET [LUGARES POR UN USUARIO]
+// router.get('/lugares/byemail/:user',async(req,res)=>{
+//     try{
+//         const useremail = req.params.user;
+//         const _user = await Usuario.findOne({email:useremail})
+//         const lugares = await Lugar.find({usuario:_user._id});
+//         res.send(lugares);
+//         console.log('pidiendo el get')
+//     }
+//     catch(e){
+//         res.status(500).send({
+//             message:'Error inesperado'
+//         })
+//     }
+// })
 //GET [LUGARES POR UN CIUDAD]
-router.get('/lugares/byciudad/:ciudad',async(req,res)=>{
-    try{
-        const nombreciudad = req.params.ciudad;
-        const lugares = await Lugar.find({nombre:new RegExp('^'+nombreciudad)});
-        res.send(lugares);
-    }
-    catch(e){
-        res.status(500).send({
-            message:'Error inesperado'
-        })
-    }
-})
+// router.get('/lugares/byciudad/:ciudad',async(req,res)=>{
+//     try{
+//         const nombreciudad = req.params.ciudad;
+//         const lugares = await Lugar.find({ciudad:{
+//             nombre: new RegExp('^'+nombreciudad)
+//         }});
+//         console.log(lugares)
+//         res.send(lugares);
+//     }
+//     catch(e){
+//         res.status(500).send({
+//             message:'Error inesperado'
+//         })
+//     }
+// })
 
     
 //POST
@@ -86,6 +105,7 @@ catch(e){
     res.status(500).send({
         message:'Error inesperado'
     })
+    
 }
 });
 
